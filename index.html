@@ -49,9 +49,9 @@
     px-5 py-3 sm:px-10 sm:py-4 flex flex-wrap justify-center items-center gap-4 sm:gap-10 text-base sm:text-lg font-semibold"
   >
     <a href="index.html" class="hover:text-[#00bfff] transition-colors whitespace-nowrap">Home</a>
-    <a href="projects.html" class="hover:text-[#00bfff] transition-colors whitespace-nowrap">Projects</a>
-    <a href="about.html" class="hover:text-[#00bfff] transition-colors whitespace-nowrap">About</a>
-    <a href="contact.html" class="hover:text-[#00bfff] transition-colors whitespace-nowrap">Contact</a>
+    <a href="#" class="hover:text-[#00bfff] transition-colors whitespace-nowrap">Projects</a>
+    <a href="#" class="hover:text-[#00bfff] transition-colors whitespace-nowrap">About</a>
+    <a href="#" class="hover:text-[#00bfff] transition-colors whitespace-nowrap">Contact</a>
   </div>
 </div>
 
@@ -248,6 +248,12 @@
     <p>Design by <span class="text-[#00bfff] font-semibold">Heckto</span></p>
   </div>
 </section>
+<footer id="footerSection" class="h-[60vh] bg-black relative overflow-hidden flex items-end justify-end">
+  <h1 id="footerText" 
+      class="font-black leading-[0.9] tracking-tight text-white absolute bottom-0 right-6 text-right text-[25vw] sm:text-[18vw] lg:text-[12vw]">
+    BY BBS EMPIRE
+  </h1>
+</footer>
 
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -288,6 +294,32 @@
   });
 
     gsap.registerPlugin(ScrollTrigger);
+
+     gsap.to("#footerText", {
+    opacity: 1,
+    y: 0,
+    duration: 1.5,
+    ease: "power4.out",
+    scrollTrigger: {
+      trigger: "#footerSection",
+      start: "top 80%",
+      toggleActions: "play none none reverse"
+    }
+  });
+
+  gsap.fromTo("#footerSection", 
+    { clipPath: "inset(100% 0 0 0)" }, 
+    {
+      clipPath: "inset(0% 0 0 0)",
+      duration: 1.8,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: "#footerSection",
+        start: "top 90%",
+        toggleActions: "play none none reverse"
+      }
+    }
+  );
 
     gsap.set("#readMoreBtn", { filter: "blur(15px)", opacity: 0.3, scale: 0.9 });
       // Animate to clear when section is in view
