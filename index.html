@@ -149,6 +149,8 @@
 
 
     
+
+    
   <section id="readMoreSection" class="relative h-screen w-full overflow-hidden">
     <!-- Background video -->
     <video
@@ -162,6 +164,92 @@
     </video>  </section>
 
   
+<section id="faqSection" class="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center px-10 py-24">
+  <div class="max-w-4xl w-full space-y-10">
+    
+    <!-- Original Music -->
+    <div class="faq-item border-b border-white/20 pb-6">
+      <div class="flex justify-between items-center">
+        <h2 class="text-2xl sm:text-3xl font-bold">ORIGINAL MUSIC</h2>
+        <button class="toggle-btn bg-white text-black px-4 py-2 rounded-full font-medium transition-all duration-300">
+          more info
+        </button>
+      </div>
+      <p class="faq-content mt-4 text-sm sm:text-base leading-relaxed opacity-0 h-0 overflow-hidden transition-all duration-700 ease-in-out">
+        Produzione e pubblicazione di brani Urban – dall’Hip Hop al Reggaeton – unendo energia latina e autenticità italiana.
+        Ogni traccia nasce con la missione di raccontare la realtà, i sogni e la libertà dei nuovi talenti.
+      </p>
+    </div>
+
+    <!-- Events & Clubbing -->
+    <div class="faq-item border-b border-white/20 pb-6">
+      <div class="flex justify-between items-center">
+        <h2 class="text-2xl sm:text-3xl font-bold">EVENTS & CLUBBING</h2>
+        <button class="toggle-btn bg-white text-black px-4 py-2 rounded-full font-medium transition-all duration-300">
+          more info
+        </button>
+      </div>
+      <p class="faq-content mt-4 text-sm sm:text-base leading-relaxed opacity-0 h-0 overflow-hidden transition-all duration-700 ease-in-out">
+        Dai party underground ai palchi internazionali, ogni evento BBS Empire è un’esperienza immersiva
+        fatta di musica, connessione e libertà. La cultura del clubbing viene trasformata in un movimento positivo e inclusivo.
+      </p>
+    </div>
+
+    <!-- Marketing & Communication -->
+    <div class="faq-item border-b border-white/20 pb-6">
+      <div class="flex justify-between items-center">
+        <h2 class="text-2xl sm:text-3xl font-bold">MARKETING & COMMUNICATION</h2>
+        <button class="toggle-btn bg-white text-black px-4 py-2 rounded-full font-medium transition-all duration-300">
+          more info
+        </button>
+      </div>
+      <p class="faq-content mt-4 text-sm sm:text-base leading-relaxed opacity-0 h-0 overflow-hidden transition-all duration-700 ease-in-out">
+        Comunicazione strategica, virale e autentica. Ogni campagna nasce per creare impatto e valorizzare i talenti
+        attraverso una narrazione coerente e potente, capace di unire musica, stile e cultura urbana.
+      </p>
+    </div>
+
+    <!-- Empire Mindset -->
+    <div class="faq-item border-b border-white/20 pb-6">
+      <div class="flex justify-between items-center">
+        <h2 class="text-2xl sm:text-3xl font-bold">EMPIRE MINDSET</h2>
+        <button class="toggle-btn bg-white text-black px-4 py-2 rounded-full font-medium transition-all duration-300">
+          more info
+        </button>
+      </div>
+      <p class="faq-content mt-4 text-sm sm:text-base leading-relaxed opacity-0 h-0 overflow-hidden transition-all duration-700 ease-in-out">
+        Disciplina, visione e crescita personale: BBS Empire crede che ogni talento possa costruire il proprio impero.
+        Attraverso interviste e contenuti ispirazionali, promuoviamo la costanza e l’autodeterminazione.
+      </p>
+    </div>
+
+    <!-- BBS Studio & Label -->
+    <div class="faq-item pb-6">
+      <div class="flex justify-between items-center">
+        <h2 class="text-2xl sm:text-3xl font-bold">BBS STUDIO & LABEL</h2>
+        <button class="toggle-btn bg-white text-black px-4 py-2 rounded-full font-medium transition-all duration-300">
+          more info
+        </button>
+      </div>
+      <p class="faq-content mt-4 text-sm sm:text-base leading-relaxed opacity-0 h-0 overflow-hidden transition-all duration-700 ease-in-out">
+        Il cuore creativo dell’Impero: uno studio indipendente dedicato a produzione, registrazione e collaborazioni.
+        Con BBS Empire Records, promuoviamo libertà artistica e indipendenza, portando la cultura Urban italiana nel mondo.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="h-screen flex items-center justify-center bg-[#0a0a0a] relative">
+  <div class="absolute bottom-4 left-0 w-full flex justify-center text-white text-sm tracking-wide">
+    <p>© 2025 BBS Empire. All Rights Reserved.</p>
+  </div>
+  <div class="absolute bottom-4 right-6 text-white text-sm tracking-wide">
+    <p>Design by <span class="text-[#00bfff] font-semibold">Heckto</span></p>
+  </div>
+</section>
+
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
@@ -172,9 +260,34 @@
       });
       
 
+       const faqs = document.querySelectorAll(".faq-item");
+
+   faqs.forEach((faq) => {
+    const btn = faq.querySelector(".toggle-btn");
+    const content = faq.querySelector(".faq-content");
+
+    btn.addEventListener("click", () => {
+      const isOpen = content.classList.contains("open");
+
+      // Close all FAQs first
+      document.querySelectorAll(".faq-content").forEach((c) => {
+        c.classList.remove("open");
+        c.style.height = "0";
+        c.style.opacity = "0";
+      });
+      document.querySelectorAll(".toggle-btn").forEach((b) => (b.textContent = "more info"));
+
+      // Open the clicked one
+      if (!isOpen) {
+        content.classList.add("open");
+        content.style.height = content.scrollHeight + "px";
+        content.style.opacity = "1";
+        btn.textContent = "less info";
+      }
+    });
+  });
 
     gsap.registerPlugin(ScrollTrigger);
-    
 
     gsap.set("#readMoreBtn", { filter: "blur(15px)", opacity: 0.3, scale: 0.9 });
       // Animate to clear when section is in view
@@ -192,7 +305,7 @@
       });
 
        // Scroll animation
-  gsap.to("#readMoreBtn", {
+    gsap.to("#readMoreBtn", {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
@@ -207,7 +320,7 @@
   });
 
   // Subtle parallax effect on the video
-  gsap.to("#readMoreSection video", {
+     gsap.to("#readMoreSection video", {
     scale: 1.1,
     ease: "none",
     scrollTrigger: {
