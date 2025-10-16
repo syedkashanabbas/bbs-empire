@@ -27,7 +27,7 @@
   <div class="max-w-8xl mx-auto flex items-center justify-between px-6 py-3">
     <!-- Left text -->
     <span class="text-white text-sm sm:text-base font-semibold tracking-widest uppercase">
-      by <span class="text-[#00bfff]">BBS Empire</span>
+      by  <span class="text-[#00bfff]">BBS Empire</span>
     </span>
 
     <!-- Center logo -->
@@ -60,7 +60,7 @@
 
    <section class="relative h-screen w-full overflow-hidden">
   <img
-    src="assets/img/hero-bg.jpg"
+    src="assets/img/SIDE BBS.jpg"
     class="absolute inset-0 w-full h-full object-cover z-0"
   />
 
@@ -129,9 +129,37 @@
     id="readMoreBtn"
     class="px-8 py-4 bg-white text-black font-semibold rounded-full text-lg tracking-wide transition-all duration-300"
   >
-    read more
+    READ MORE
   </button>
 </section>
+
+
+
+  <section id="readMoreSection" class="relative h-screen w-full overflow-hidden">
+    <!-- Background video -->
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover"
+    >
+      <source src="assets/img/third-section.mp4" type="video/mp4" />
+    </video>  </section>
+
+
+    
+  <section id="readMoreSection" class="relative h-screen w-full overflow-hidden">
+    <!-- Background video -->
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover"
+    >
+      <source src="assets/img/fourth-section.mp4" type="video/mp4" />
+    </video>  </section>
 
   
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -144,7 +172,9 @@
       });
       
 
-      gsap.registerPlugin(ScrollTrigger);
+
+    gsap.registerPlugin(ScrollTrigger);
+    
 
     gsap.set("#readMoreBtn", { filter: "blur(15px)", opacity: 0.3, scale: 0.9 });
       // Animate to clear when section is in view
@@ -160,6 +190,34 @@
           toggleActions: "play none none reverse",
         },
       });
+
+       // Scroll animation
+  gsap.to("#readMoreBtn", {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    duration: 1.5,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: "#readMoreSection",
+      start: "top 80%",
+      end: "center center",
+      scrub: true,
+    },
+  });
+
+  // Subtle parallax effect on the video
+  gsap.to("#readMoreSection video", {
+    scale: 1.1,
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#readMoreSection",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true,
+    },
+  });
+
       // Pin hero and reveal second section
       ScrollTrigger.create({
         trigger: "section:nth-of-type(1)", // hero
